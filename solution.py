@@ -64,10 +64,10 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # else:
     #     print('MAIL DATA received.')
     # Fill in end
-
+    mailQUITCommand = "QUIT\r\n"
     # Send message data.
     # Fill in start
-    clientSocket.send(("To: to652@nyu.edu").encode())
+    clientSocket.send(mailQUITCommand.encode())
     clientSocket.send(("From: to652@nyu.edu").encode())
     clientSocket.send(("Subject: Hello World").encode())
     clientSocket.send((msg).encode())
@@ -81,7 +81,6 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send QUIT command and handle server response.
     # Fill in start
-    mailQUITCommand = "QUIT\r\n"
     clientSocket.send(mailQUITCommand.encode())
     recv1 = clientSocket.recv(1024).decode()
     # print(recv1)
